@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My HTML Page</title>
+</head>
+<body>
+   <div id="content">
+    <div class ="block_1">
+        <img src="{% static 'images/mainicon.png' %}" class="image" alt="">
+    </div>
+    <form class="block_2" action="" method="post">
+         {%csrf_token%} 
+        <div>
+            <div class="format">
+                <div id="heading"><h1>COSMETICS</h1></div><div class="caption">~beauty</div>
+            <div class="First_Name input-box-container">
+                <label for="First_Name">First_Name:</label>
+                <input id="First_Name"  class="input-element"  type="text" required name="First_Name">
+            </div>
+            <div class="Last_Name input-box-container">
+                <label for="Last_Name">Last_Name:</label>
+                <input id="Last_Name"  class="input-element"  type="text" required name="Last_Name">
+            </div>
+            <div class="email input-box-container">
+                    <label for="email" >Email:</label>
+                    <input id="email" class="input-element" type="email" required name="email">
+                </div>
+                <div class="password input-box-container">
+                    <label for="password" >Password:</label>
+                    <input id="password" class="input-element" type="password" required name="pwd">
+                </div>
+                <div class="confirm password input-box-container">
+                    <label for="password" >Confirm Password:</label>
+                    <input id="password" class="input-element" type="password" required name="conf_pwd">
+                </div>
+                <div style="color: red;">{{error}}</div>
+                 <div class="Register">
+                    <button id="Register-btn" type="submit" >Register</button>
+                
+                </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>  

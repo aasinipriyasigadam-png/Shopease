@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'cart.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="cart">
+        <div class="items-header">
+            <div class="heading">COSMETICS</div>
+            <div class="forms">
+                {% if not request.user.is_authenticated %}
+                <a href="http://127.0.0.1:8000/register" class="log">Register Now</a>
+                <a href="http://127.0.0.1:8000/login" class="log">Login</a>
+                {% else %}
+                <div class="username">
+                    <img src="{% static 'images/icon.svg' %}" class="icon" alt="">
+                    <div>Welcome, {{request.user.username}}</div>
+                </div>
+                <a href="http://127.0.0.1:8000/logout" class="log">Logout</a>
+                {%endif%}
+                <a href="http://127.0.0.1:8000/home" class="log">Home</a>
+                <a href="http://127.0.0.1:8000/cart" class="log">Cart</a>
+                <a href="http://127.0.0.1:8000/orders" class="log">Orders</a>
+            </div>
+        </div>
+        <h4 class="added">Added to cart</h4>
+        {% for item in cart_items%}
+        <div class="item-card">
+            <img src="{{ item.image }}" class="product-image" alt="">
+            <div class="product_details">
+                <div class="name_count">
+                    <div class="name items1">{{item.name}}</div>
+                    <div class="count items1">({{item.count}})</div>
+                </div>
+                <div class="category">beauty</div>
+            </div>
+            <div class="price">₹ {{item.price}} /-</div>
+        </div>
+        {%endfor%}
+    </div>
+</body>
+<script src="{%static 'JS/cart.js' %}"></script>
+
+</html>
